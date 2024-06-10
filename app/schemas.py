@@ -9,7 +9,7 @@ class Pokemon(BaseModel):
   type: str
 
   class Config:
-    orm_mode = True
+    from_attributes = True
 
 class PokemonList(BaseModel):
   count: int

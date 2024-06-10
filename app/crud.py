@@ -6,7 +6,7 @@ from .utils.security import get_password_hash, verify_password
 
 
 def get_pokemons(db: Session, skip: int = 0,  limit: int = 20):
-  return db.query(models.Pokemon).offset(skip).limit(limit).all()
+  return db.query(models.Pokemon.name, models.Pokemon.id, models.Pokemon.types).order_by(models.Pokemon.name).offset(skip).limit(limit).all()
 
 def get_pokemon_by_id(db: Session, pokemon_id: int):
     return db.query(models.Pokemon).filter(models.Pokemon.id == pokemon_id).first()
