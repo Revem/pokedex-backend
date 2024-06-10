@@ -15,6 +15,7 @@ class Pokemon(Base):
     species = Column(String)  # Categoria do Pokémon
     abilities = Column(JSON)  # Lista de habilidades do Pokémon
     gender_rate = Column(Integer)  # Taxa de gênero do Pokémon
+    stats = Column(JSON)  # Estatísticas do Pokémon
     official_artwork = Column(String)  # URL da arte oficial do Pokémon
 
 class User(Base):
