@@ -31,7 +31,7 @@ async def fetch_pokemon_data(client, url):
         "description": description,
         "height": data["height"],
         "weight": data["weight"],
-        "species": species_data["genera"][0]["genus"],
+        #"species": species_data["genera"][0]["genus"],
         "abilities": abilities,
         "gender_rate": gender_rate,
         "official_artwork": official_artwork_url
