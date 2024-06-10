@@ -5,12 +5,12 @@ Parte backend do teste técnico de desenvolvedor Fullstack sobre criar uma Poked
 ## Instalação
 Clone este repositório:
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/revem/pokedex-backend.git
 ```
 
 Navegue até o diretório do projeto:
 ```bash
-cd nome-do-seu-projeto
+cd pokedex-backend
 ```
 
 Instale as dependências:
