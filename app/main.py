@@ -4,7 +4,7 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from app.api.v1.endpoints import health, pokemons, users
+from app.api.v1.endpoints import health, pokemon, pokemons, users
 from app.database import Base, SessionLocal, engine, get_db
 
 from . import models, pokemon_fetcher
@@ -27,6 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(pokemon.router, prefix="/v1/pokemon", tags=["pokemons"])
 app.include_router(pokemons.router, prefix="/v1/pokemons", tags=["pokemons"])
 app.include_router(health.router, prefix="/v1/health", tags=["health"])
 app.include_router(users.router, prefix="/v1/users", tags=["users"])

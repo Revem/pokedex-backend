@@ -29,3 +29,9 @@ def authenticate_user(username: str, password: str, db: Session):
   if not verify_password(password, user.hashed_password):
     return False
   return user
+
+def search_pokemon(db: Session, query: str):
+    return db.query(models.Pokemon).filter(
+        (models.Pokemon.name.ilike(f"%{query}%")) |
+        (models.Pokemon.id == query) 
+    ).all()

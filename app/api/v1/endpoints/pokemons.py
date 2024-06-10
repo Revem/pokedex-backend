@@ -17,7 +17,7 @@ def get_db():
         db.close()
 
 @router.get("/")
-def read_pokemons(skip: int = 0, limit: int = 151, db: Session = Depends(get_db)):
+async def read_pokemons(skip: int = 0, limit: int = 151, db: Session = Depends(get_db)):
     pokemons = crud.get_pokemons(db, skip=skip, limit=limit)
     return pokemons
 
