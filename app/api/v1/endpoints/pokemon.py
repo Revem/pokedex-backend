@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app import crud, schemas
 from app.database import SessionLocal, get_db
+from app.semaphore import with_semaphore
 
 router = APIRouter()
 
@@ -18,7 +19,7 @@ def get_db():
         db.close()
 
 
-@router.get("/search", response_model=List[schemas.Pokemon])
+@router.get("/search", response_model=List[schemas.Pokemon], dependencies=[Depends(with_semaphore)])
 def search_pokemon(query: str = Query(..., min_length=1), db: Session = Depends(get_db)):
     logging.info(f"Searching for pokemons with query: {query}")
     pokemons = crud.search_pokemon(db, query=query)

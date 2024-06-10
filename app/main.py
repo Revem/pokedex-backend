@@ -4,13 +4,14 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from app.api.v1.endpoints import health, pokemon, pokemons, users
+from app.api.v1.endpoints import health, pokemon, pokemons
 from app.api.v2.endpoints import xml
 from app.database import Base, SessionLocal, engine, get_db
 
 from . import models, pokemon_fetcher
 
 Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
 
@@ -32,4 +33,3 @@ app.include_router(pokemon.router, prefix="/v1/pokemon", tags=["pokemons"])
 app.include_router(pokemons.router, prefix="/v1/pokemons", tags=["pokemons"])
 app.include_router(xml.router, prefix="/v2/pokemons", tags=["pokemons"])
 app.include_router(health.router, prefix="/v1/health", tags=["health"])
-app.include_router(users.router, prefix="/v1/users", tags=["users"])

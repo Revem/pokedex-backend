@@ -17,11 +17,3 @@ class Pokemon(Base):
     gender_rate = Column(Integer)  # Taxa de gênero do Pokémon
     stats = Column(JSON)  # Estatísticas do Pokémon
     official_artwork = Column(String)  # URL da arte oficial do Pokémon
-
-class User(Base):
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
